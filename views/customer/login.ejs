@@ -1,8 +1,82 @@
-<h1>Login Customer</h1>
+<%- include("../partials/header.ejs") %> 
 
-<form action="/login/customer" method="POST">
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <input type="submit" value="Login">
-    <!-- <button>Login</button> -->
-</form>
+<style>
+    .log-in {
+        background: rgb(240, 209, 230);
+        padding: 40px;
+        width: 400px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: aliceblue;
+        margin-left: 30%;
+        margin-top: 5%;
+        border-radius: 20px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .title {
+        padding-top: 30px;
+    }
+
+    #username {
+        display: block;
+        text-align: center;
+        border: 2px solid rgb(0, 5, 7);
+        border-radius: 40px;
+        padding: 11px 30px;
+        width: 160px;
+        background: none;
+        margin: 20px auto;
+        transition: 0.25s;
+        color: aliceblue;
+    }
+
+    #password {
+        display: block;
+        text-align: center;
+        border: 2px solid rgb(3, 7, 8);
+        border-radius: 40px;
+        padding: 11px 30px;
+        width: 160px;
+        background: none;
+        margin: 20px auto;
+        transition: 0.25s;
+        color: aliceblue;
+    }
+
+    #submit {
+        border: 2px solid rgb(102, 6, 78);
+        background: rgb(102, 6, 78);
+        color: aliceblue;
+        padding: 11px 20px;
+        border-radius: 40px;
+        margin-bottom: 30px;
+        width: 100px;
+        transition: 0.25s;
+    }
+
+    #log-username:hover, #log-password:hover {
+        width: 200px;
+    }
+
+    #submit:hover {
+        cursor: pointer;
+        width: 120px;
+    }
+</style>
+
+<div class="container">
+    <section class="loginpage">
+        <form action="/login/customer" method="POST" class="log-in">
+            <h1 class="title">Login as a customer</h1>
+            <label for="username"></label>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="submit" value="Login" id="submit">
+        </form>
+    </section>
+</div>
+
+
+<%- include("../partials/footer.ejs") %> 
