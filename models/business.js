@@ -19,6 +19,8 @@ const BusinessSchema = new mongoose.Schema({
     {
       enquiry: String,
       customerId: String,
+      customerName: String,
+      location: String,
     },
   ],
 });

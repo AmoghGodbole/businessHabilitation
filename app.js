@@ -63,6 +63,7 @@ app.post("/register/customer", function (req, res) {
     new Customer({
       username: req.body.username,
       location: req.body.location,
+      fullName: req.body.fullName,
       type: "customer",
     }),
     req.body.password,
@@ -153,12 +154,19 @@ app.get("/logout/business", function (req, res) {
 });
 
 function isCustomerLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    console.log("req user: ", req.user);
+  if (req.isAuthenticated() && req.user.type === "customer") {
     return next();
   }
   console.log("Nope");
   res.redirect("/login/customer");
+}
+
+function isBusinessLoggedIn(req, res, next) {
+  if (req.isAuthenticated() && req.user.type === "business") {
+    return next();
+  }
+  console.log("Nope");
+  res.redirect("/login/business");
 }
 
 // PAGE WHERE CUSTOMER SEES A LIST OF ITEMS
@@ -167,22 +175,28 @@ app.get("/customer/list", isCustomerLoggedIn, async (req, res) => {
   res.render("businessList", { shops: result });
 });
 
-app.post("/business/:id/enquire", async (req, res) => {
-  console.log("req params id: ", req.params.id);
+app.post("/business/:id/enquire", isCustomerLoggedIn, async (req, res) => {
   const { enquiry } = req.body;
+  const customer = await Customer.findById(req.user._id);
+  const customerName = customer.fullName;
+  const location = customer.location;
   const newEnquriy = {
     enquiry,
     customerId: req.user.id,
+    customerName,
+    location,
   };
   let result = await Business.findById(req.params.id);
   result.enquiries.push(newEnquriy);
   await result.save();
-  console.log("Result: ", result);
 });
 
 // GET ALL THE ENQUIRIES FOR A PARTICULAR BUSINESS
-app.get("/business/enquiries", (req, res) => {
-  res.render("enquiryList", { enquiries });
+app.get("/business/enquiries", isBusinessLoggedIn, async (req, res) => {
+  const { user } = req;
+  const result = await Business.findById(user._id);
+  console.log("result: ", result.enquiries);
+  res.render("enquiryList", { enquiries: result.enquiries });
 });
 
 app.listen(3000, function () {

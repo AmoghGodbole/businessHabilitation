@@ -6,6 +6,7 @@ const CustomerSchema = new mongoose.Schema({
   password: String,
   type: String,
   location: String,
+  fullName: String,
 });
 
 CustomerSchema.plugin(passportLocalMongoose);
