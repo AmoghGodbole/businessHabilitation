@@ -9,10 +9,13 @@ const CustomerSchema = new mongoose.Schema({
   fullName: String,
   enquiries: [
     {
+      // id: String,
       enquiry: String,
       customerId: String,
       customerName: String,
       location: String,
+      status: Boolean,
+      checked: Boolean
     },
   ],
 });

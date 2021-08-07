@@ -92,7 +92,7 @@ app.post(
     successRedirect: "/secret",
     failureRedirect: "/login/customer",
   }),
-  function (req, res) {}
+  function (req, res) { }
 );
 
 //Log Out Route
@@ -144,7 +144,7 @@ app.post(
     successRedirect: "/secret",
     failureRedirect: "/login/business",
   }),
-  function (req, res) {}
+  function (req, res) { }
 );
 
 //Log Out Route
@@ -185,6 +185,8 @@ app.post("/business/:id/enquire", isCustomerLoggedIn, async (req, res) => {
     customerId: req.user.id,
     customerName,
     location,
+    // status: false,
+    // checked: false
   };
   customer.enquiries.push(newEnquriy);
   customer.save();
@@ -198,8 +200,35 @@ app.get("/business/enquiries", isBusinessLoggedIn, async (req, res) => {
   const { user } = req;
   const result = await Business.findById(user._id);
   console.log("result: ", result.enquiries);
-  res.render("enquiryList", { enquiries: result.enquiries });
+  res.render("enquiryList", { enquiries: result.enquiries, businessName: result.username });
 });
+
+//ACCEPTING OR REJECTING AN ENQUIRY
+app.post("/customer/:status/:customerName", async (req, res) => {
+  const { user } = req;
+  const business = await Business.findById(user._id);
+  // const newBusiness = business.enquiries.map(e => (
+  //   {
+  //     enquiry: e.enquiry,
+  //     customerId: e.customerId,
+  //     customerName: e.customerName,
+  //     location: e.location
+  //   }
+  // ))
+  // console.log('New business : ', newBusiness);
+  const { status, customerName } = req.params;
+  const customer = await Customer.find({ fullName: customerName });
+  console.log(customer);
+  // const requiredEnquiry = business.enquiries.filter(enquiry => customer.enquiries.includes(enquiry));
+  // console.log(requiredEnquiry);
+  if (status === 'accept') {
+    // requiredEnquiry.status = true;
+  }
+  else {
+
+  }
+})
+
 
 app.listen(3000, function () {
   console.log("Server has started");

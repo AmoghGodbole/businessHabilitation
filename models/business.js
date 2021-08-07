@@ -17,10 +17,13 @@ const BusinessSchema = new mongoose.Schema({
   // THE CUSTOMER WILL BE DULY NOTIFIED ABOUT THE ACCEPTANCE OR REJECTION
   enquiries: [
     {
+      // id: String,
       enquiry: String,
       customerId: String,
       customerName: String,
       location: String,
+      status: Boolean,
+      checked: Boolean
     },
   ],
 });
