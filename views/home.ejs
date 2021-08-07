@@ -1,11 +1,24 @@
-<h1>This is the home page</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <title>
+            Businessy
+        </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    </head>
+    <body>
+    
+        <div class="container text-center mx-auto" style="margin-top: 10%;">
+            <h1>WELCOME TO BUSINESSY!</h1>
+            <p>We take pride in helping local businesses.</p>
+            <p>Login as a customer to show some support!</p>
+            <p>If you're a small business, you've come to the right place as well!</p>
+            <p>Login as a business to start building your brand!</p>
+            <div class="d-flex justify-content-around mt-5">
+                <a href="/login/customer" class="btn btn-outline-primary">Login as a customer</a>
+                <a href="/login/business" class="btn btn-outline-primary">Login as a business owner</a>
+            </div>
+        </div>
 
-<li><a href="/register/customer">Sign Up</a></li>
-<li><a href="/login/customer">Log In</a></li>
-<li><a href="/logout/customer">Log Out</a></li>
-
-<hr>
-
-<li><a href="/register/business">Sign Up Business</a></li>
-<li><a href="/login/business">Log In</a></li>
-<li><a href="/logout/business">Log Out</a></li>
+<%- include("partials/footer.ejs") %> 
