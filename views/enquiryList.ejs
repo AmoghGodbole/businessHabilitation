@@ -1,53 +1,29 @@
-<!--*
 
-*MAKE A CARD FOR EVERY SHOP*
+<!-- 
+    MAKE A CARD FOR EVERY SHOP
+    USE BOOTSTRAP
+    First render all the shops, we will later add in the filtering logic
+-->
 
-*USE BOOTSTRAP*
-
-*First render all the shops, we will later add in the filtering logic*
-
-- *->*
-
-<% *for*(let i=0; i<enquiries.length; i++){ %>
-
-<div>
-
-<strong>Customer Name: </strong>
-
-<%= enquiries[i].customerName %>
-
-<strong>The enquiry: </strong>
-
-<%= enquiries[i].enquiry %>
-
-*<!--*
-
-*If he accepts, redirect to a chat page that currently won't be implemented.*
-
-*We also want to host the conversation on our website*
-
-*We don't want the person going to whatsapp or telegram and placing an order there*
-
-*We want our website to be a shop stop for all things necessary related to order placing*
-
-*-->*
-
-<form action="/customer/accept" *method*="POST">
-
-    <button>Accept</button>
-    
-    </form>
-    
-    *<!-- If he rejects, remove the enquiry from the enquiries array of the business model -->*
-    
-    <form *action*="/customer/reject" *method*="POST">
-    
-    <button>Reject</button>
-    
-    </form>
-    
+<% for(let i=0; i<enquiries.length; i++){ %>
+    <div>
+        <strong>Customer Name: </strong>
+        <%= enquiries[i].customerName %> 
+        <strong>The enquiry: </strong>
+        <%= enquiries[i].enquiry %>
+        <!-- 
+            If he accepts, redirect to a chat page that currently won't be implemented.
+            We also want to host the conversation on our website
+            We don't want the person going to whatsapp or telegram and placing an order there
+            We want our website to be a shop stop for all things necessary related to order placing
+        -->
+        <form action="/customer/accept" method="POST">
+            <button>Accept</button>
+        </form>
+        <!-- If he rejects, remove the enquiry from the enquiries array of the business model -->
+        <form action="/customer/reject" method="POST">
+            <button>Reject</button>
+        </form>
     </div>
-    
-    <hr>
-    
-    <% } %>
+    <hr> 
+<% } %> 
