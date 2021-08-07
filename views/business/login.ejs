@@ -1,12 +1,80 @@
-<h1>Login</h1>
+<style>
+    .log-in {
+        background: rgb(240, 209, 230);
+        padding: 40px;
+        width: 400px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: black;
+        margin-left: 30%;
+        margin-top: 5%;
+        border-radius: 20px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    }
 
-<form action="/login/business" method="POST">
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <input type="submit" value="Login">
-    <!-- <button>Login</button> -->
-</form>
+    .title {
+        padding-top: 30px;
+    }
 
-<li><a href="/register/business">Sign Up</a></li>
-<li><a href="/business/login">Log In</a></li>
-<li><a href="/business/logout">Log Out</a></li>
+    #username {
+        display: block;
+        text-align: center;
+        border: 2px solid rgb(0, 5, 7);
+        border-radius: 40px;
+        padding: 11px 30px;
+        width: 160px;
+        background: none;
+        margin: 20px auto;
+        transition: 0.25s;
+        color: black;
+    }
+
+    #password {
+        display: block;
+        text-align: center;
+        border: 2px solid rgb(3, 7, 8);
+        border-radius: 40px;
+        padding: 11px 30px;
+        width: 160px;
+        background: none;
+        margin: 20px auto;
+        transition: 0.25s;
+        color: black;
+    }
+
+    #submit {
+        border: 2px solid rgb(102, 6, 78);
+        background: rgb(102, 6, 78);
+        color: aliceblue;
+        padding: 11px 20px;
+        border-radius: 40px;
+        margin-bottom: 30px;
+        width: 100px;
+        transition: 0.25s;
+    }
+
+    #log-username:hover, #log-password:hover {
+        width: 200px;
+    }
+
+    #submit:hover {
+        cursor: pointer;
+        width: 120px;
+    }
+</style>
+
+<div class="container">
+    <section class="loginpage">
+        <form action="/login/business" method="POST" class="log-in">
+            <h1 class="title" style="color: black;">Login as a business owner</h1>
+            <label for="username"></label>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="submit" value="Login" id="submit">
+            <p style="color: black;">Don't have an account? <a href="/register/business" class="btn">Sign Up!</a></p>
+        </form>
+    </section>
+</div>
+
+<%- include("../partials/footer.ejs") %> 

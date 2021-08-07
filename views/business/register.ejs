@@ -1,22 +1,123 @@
-<h1>Sign Up Form</h1>
+<style>
+    ::-webkit-scrollbar {
+    width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    }
+    ::-webkit-scrollbar-thumb {
+    background: #888; 
+        border-radius:10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    
+    background: #555; 
+    } 
 
-<form action="/register/business" method="POST">
-    <input type="text" placeholder="Username" name="username">
-    <input type="password" placeholder="Password" name="password">
-    <input type="text" placeholder="Business Name" name="businessName">
-    <select name="location" required>
-        <% for (var i = 0; i < locations.length ; i++) { %>
-            <option name=<% locations[i] %> value=<% locations[i] %>> <%= locations[i] %> </option>
-        <% } %>
-    </select>
-    <select name="domains" required multiple>
-        <% for (var i = 0; i < locations.length ; i++) { %>
-            <option name=<% locations[i] %> value=<% locations[i] %>> <%= locations[i] %> </option>
-        <% } %>
-    </select>
-    <button>Submit</button>
-</form>
+    .log-in {
+        background: rgb(240, 209, 230);
+        padding: 40px;
+        width: 400px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: black;
+        margin-left: 30%;
+        margin-top: 2%;
+        border-radius: 20px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    }
 
-<li><a href="/business/register">Sign Up</a></li>
-<li><a href="/business/login">Log In</a></li>
-<li><a href="/business/logout">Log Out</a></li>
+    .title {
+        padding-top: 30px;
+    }
+
+    #username {
+        display: block;
+        text-align: center;
+        border: 2px solid rgb(0, 5, 7);
+        border-radius: 40px;
+        padding: 11px 30px;
+        width: 160px;
+        background: none;
+        margin: 10px auto;
+        transition: 0.25s;
+        color: black;
+    }
+
+    #password {
+        display: block;
+        text-align: center;
+        border: 2px solid rgb(3, 7, 8);
+        border-radius: 40px;
+        padding: 11px 30px;
+        width: 160px;
+        background: none;
+        margin: 10px auto;
+        transition: 0.25s;
+        color: black;
+    }
+
+    select{
+        display: block;
+        text-align: center;
+        border: 2px solid rgb(3, 7, 8);
+        border-radius: 40px;
+        padding: 11px 30px;
+        width: 160px;
+        background: none;
+        margin: 10px auto;
+        transition: 0.25s;
+        color: black;
+    }
+
+    option{
+        color: black;
+    }
+
+    #submit {
+        border: 2px solid rgb(102, 6, 78);
+        background: rgb(102, 6, 78);
+        color: aliceblue;
+        padding: 11px 20px;
+        border-radius: 40px;
+        margin-bottom: 30px;
+        width: 100px;
+        transition: 0.25s;
+    }
+
+    #log-username:hover, #log-password:hover {
+        width: 200px;
+    }
+
+    #submit:hover {
+        cursor: pointer;
+        width: 120px;
+    }
+</style>
+
+
+<div class="container">
+    <section class="loginpage">
+        <form action="/register/business" method="POST" class="log-in">
+            <h1 class="title" style="color: black;">Register as a business</h1>
+            <label for="username"></label>
+            <input type="text" id="username" placeholder="Business Name" name="businessName" required>
+            <label for="username"></label>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="Password">
+            <select name="location" required>
+                <% for (var i = 0; i < locations.length ; i++) { %>
+                    <option name=<% locations[i] %> value=<% locations[i] %>> <%= locations[i] %> </option>
+                <% } %>
+            </select>
+            <select name="domains" required multiple style="border-radius: 0;">
+                <% for (var i = 0; i < locations.length ; i++) { %>
+                    <option name=<% locations[i] %> value=<% locations[i] %>> <%= locations[i] %> </option>
+                <% } %>
+            </select>
+            <input type="submit" value="Login" id="submit">
+            <p style="color: black;">Already have an account? <a href="/login/business" class="btn">Sign In!</a></p>
+        </form>
+    </section>
+</div>
