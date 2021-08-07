@@ -4,13 +4,10 @@
     USE BOOTSTRAP
     First render all the shops, we will later add in the filtering logic
 -->
-<%- include("partials/header.ejs") %> 
+    <%- include("partials/header.ejs") %> 
 <style>
     /* STYLING HERE */
     .card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
         background-color: #fff;
         border: 1px solid rgba(0, 0, 0, 0.125);
         border-radius: 0.25rem;
@@ -22,37 +19,15 @@
     .form-control {
         margin: 10px auto;
     }
-    .btn {
-        margin: auto;
-    }
 </style>
-
-<!-- <% for(let i=0; i<shops.length; i++){ %>
-    <div>
-        <strong>Business Name: </strong>
-        <%= shops[i].businessName %> 
-        <strong>Domains: </strong>
-        <%= shops[i].domains %>
-        <form action="/business/<%= shops[i].id %>/enquire" method="POST">
-            <input 
-                type="text" 
-                placeholder="Make an enquiry regarding the product you need" 
-                name="enquiry" 
-            />
-            <button>Enquire!</button>
-        </form>
-    </div>
-    <hr> 
-<% } %>  -->
-
 
 <!-- MAKE A SEPERATE ONE. DON'T CHANGE ANYTHING VARCHA -->
 <!-- 
     http://localhost:3000/customer/list
  -->
- <div class="py-5">
+<div class="py-5">
     <div class="container">
-        <div class="row justify-content-around">
+        <div class="row">
             <% for(let i=0; i<shops.length; i++){ %>
                 <div class="col-4">
                     <div class="card">

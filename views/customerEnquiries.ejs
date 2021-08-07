@@ -27,18 +27,19 @@
                 <div class="col-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><strong>Customer Name</strong></h5>
+                            <!-- <h5 class="card-title"><strong>Customer Name</strong></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><%= enquiries[i].customerName %></h6>
                             <h5 class="card-title"><strong>Stays at</strong></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><%= enquiries[i].location %></h6>
-                            <h5 class="card-title"><strong>The enquiry</strong></h5>
+                            <h5 class="card-title"><strong>The enquiry</strong></h5> -->
                             <h6 class="card-subtitle mb-2 text-muted"><%= enquiries[i].enquiry %></h6>
-                            <form action="/customer/accept/<%=enquiries[i].customerName%>/<%=i%>" method="POST" class="form-group">
+                            <h6 class="card-subtitle mb-2 text-muted">THE STATUS OF THE ENQUIRY</h6>
+                            <!-- <form action="/customer/accept/<%=enquiries[i].customerName%>/<%=i%>" method="POST" class="form-group">
                                 <button class="btn btn-block btn-outline-success">Accept!</button>
                             </form>
                             <form action="/customer/reject/<%=enquiries[i].customerName%>/<%=i%>" method="POST" class="form-group">
                                 <button class="btn btn-block btn-outline-danger">Decline</button>
-                            </form>
+                            </form> -->
                         </div>
                     </div>
                 </div>

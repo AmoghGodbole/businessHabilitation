@@ -18,9 +18,23 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/business/enquiries">Your Enquiries<span class="sr-only">(current)</span></a>
-                </li>
+                <% if(currentUser.type === "business"){ %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/business/enquiries">Your Enquiries<span class="sr-only">(current)</span></a>
+                  </li>
+                  <% } %>
+                <% if(currentUser.type === "customer"){ %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/customer/enquiries">Your Enquiries<span class="sr-only">(current)</span></a>
+                  </li>
+                  <% } %>
+                <% if(!currentUser){ %>
+                  <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/register">Sign Up</a></li>
+                <% } else { %>
+                    <li class="nav-item"><a class="nav-link" href="#">Signed In As <%= currentUser.username %></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                <% } %>
               </ul>
             </div>
           </nav>
