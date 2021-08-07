@@ -1,0 +1,12 @@
+<h1>Sign Up Form Customer</h1>
+
+<form action="/register/customer" method="POST">
+    <input type="text" placeholder="Username" name="username" required>
+    <input type="password" placeholder="Password" name="password" required>
+    <select name="location" required>
+        <% for (var i = 0; i < locations.length ; i++) { %>
+            <option name=<% locations[i] %> value=<% locations[i] %>> <%= locations[i] %> </option>
+        <% } %>
+    </select>
+    <button>Submit</button>
+</form>

@@ -1,0 +1,22 @@
+<h1>Sign Up Form</h1>
+
+<form action="/register/business" method="POST">
+    <input type="text" placeholder="Username" name="username">
+    <input type="password" placeholder="Password" name="password">
+    <input type="text" placeholder="Business Name" name="businessName">
+    <select name="location" required>
+        <% for (var i = 0; i < locations.length ; i++) { %>
+            <option name=<% locations[i] %> value=<% locations[i] %>> <%= locations[i] %> </option>
+        <% } %>
+    </select>
+    <select name="domains" required multiple>
+        <% for (var i = 0; i < locations.length ; i++) { %>
+            <option name=<% locations[i] %> value=<% locations[i] %>> <%= locations[i] %> </option>
+        <% } %>
+    </select>
+    <button>Submit</button>
+</form>
+
+<li><a href="/business/register">Sign Up</a></li>
+<li><a href="/business/login">Log In</a></li>
+<li><a href="/business/logout">Log Out</a></li>
