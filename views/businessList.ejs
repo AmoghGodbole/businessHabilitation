@@ -1,0 +1,43 @@
+<!--*
+
+*MAKE A CARD FOR EVERY SHOP*
+
+*USE BOOTSTRAP*
+
+*First render all the shops, we will later add in the filtering logic*
+
+- *->*
+
+<% for(let i=0; i<shops.length; i++){ %>
+
+<div>
+
+<strong>Business Name: </strong>
+
+<%= shops[i].businessName %>
+
+<strong>Domains: </strong>
+
+<%= shops[i].domains %>
+
+<form *action*="/business/<%= shops[i].id %>/enquire" *method*="POST">
+
+<input
+
+*type*="text"
+
+*placeholder*="Make an enquiry regarding the product you need"
+
+*name*="enquiry"
+
+/>
+
+<button>Enquire!</button>
+
+</form>
+
+</div>
+
+<hr>
+
+<% } %>
