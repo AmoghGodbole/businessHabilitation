@@ -186,7 +186,9 @@ app.post("/business/:id/enquire", isCustomerLoggedIn, async (req, res) => {
     customerName,
     location,
   };
-  let result = await Business.findById(req.params.id);
+  customer.enquiries.push(newEnquriy);
+  customer.save();
+  const result = await Business.findById(req.params.id);
   result.enquiries.push(newEnquriy);
   await result.save();
 });

@@ -7,6 +7,14 @@ const CustomerSchema = new mongoose.Schema({
   type: String,
   location: String,
   fullName: String,
+  enquiries: [
+    {
+      enquiry: String,
+      customerId: String,
+      customerName: String,
+      location: String,
+    },
+  ],
 });
 
 CustomerSchema.plugin(passportLocalMongoose);
