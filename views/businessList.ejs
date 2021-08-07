@@ -4,12 +4,30 @@
     USE BOOTSTRAP
     First render all the shops, we will later add in the filtering logic
 -->
-
+<%- include("partials/header.ejs") %> 
 <style>
     /* STYLING HERE */
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.25rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .card-title, .card-subtitle {
+        text-align: center;
+    }
+    .form-control {
+        margin: 10px auto;
+    }
+    .btn {
+        margin: auto;
+    }
 </style>
 
-<% for(let i=0; i<shops.length; i++){ %>
+<!-- <% for(let i=0; i<shops.length; i++){ %>
     <div>
         <strong>Business Name: </strong>
         <%= shops[i].businessName %> 
@@ -25,19 +43,34 @@
         </form>
     </div>
     <hr> 
-<% } %> 
+<% } %>  -->
 
 
 <!-- MAKE A SEPERATE ONE. DON'T CHANGE ANYTHING VARCHA -->
 <!-- 
     http://localhost:3000/customer/list
  -->
-<div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-</div>
+    <div class="container">
+      <div class="row justify-content-between">
+        <% for(let i=0; i<shops.length; i++){ %>
+            <div class="col-4"></div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Business Name</strong></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><%= shops[i].businessName %></h6>
+                        <h5 class="card-title"><strong>Domain Name</strong></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><%= shops[i].domains %></h6>
+                        <form action="/business/<%= shops[i].id %>/enquire" method="POST" class="form-group">
+                            <input 
+                                type="text" 
+                                placeholder="Make an enquiry regarding the product you need" 
+                                name="enquiry"
+                                class="form-control"
+                            />
+                            <button class="btn btn-block btn-primary">Enquire!</button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+      </div>
