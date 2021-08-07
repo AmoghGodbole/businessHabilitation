@@ -50,27 +50,30 @@
 <!-- 
     http://localhost:3000/customer/list
  -->
+ <div class="py-5">
     <div class="container">
-      <div class="row justify-content-between">
-        <% for(let i=0; i<shops.length; i++){ %>
-            <div class="col-4"></div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title"><strong>Business Name</strong></h4>
-                        <h6 class="card-subtitle mb-2 text-muted"><%= shops[i].businessName %></h6>
-                        <h5 class="card-title"><strong>Domain Name</strong></h4>
-                        <h6 class="card-subtitle mb-2 text-muted"><%= shops[i].domains %></h6>
-                        <form action="/business/<%= shops[i].id %>/enquire" method="POST" class="form-group">
-                            <input 
-                                type="text" 
-                                placeholder="Make an enquiry regarding the product you need" 
-                                name="enquiry"
-                                class="form-control"
-                            />
-                            <button class="btn btn-block btn-primary">Enquire!</button>
-                        </form>
+        <div class="row justify-content-around">
+            <% for(let i=0; i<shops.length; i++){ %>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>Business Name</strong></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><%= shops[i].businessName %></h6>
+                            <h5 class="card-title"><strong>Domain Name</strong></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><%= shops[i].domains %></h6>
+                            <form action="/business/<%= shops[i].id %>/enquire" method="POST" class="form-group">
+                                <input 
+                                    type="text" 
+                                    placeholder="Make an enquiry regarding the product you need" 
+                                    name="enquiry"
+                                    class="form-control"
+                                />
+                                <button class="btn btn-block btn-primary">Enquire!</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <% } %>
-            </div>
-      </div>
+            <% } %>
+        </div>
+    </div>
+</div>
