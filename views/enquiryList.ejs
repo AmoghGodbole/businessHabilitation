@@ -3,46 +3,122 @@
     USE BOOTSTRAP
     First render all the shops, we will later add in the filtering logic
 -->
-<%- include("partials/header.ejs") %> 
-<style>
-    /* STYLING HERE */
-    .card {
-        background-color: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.125);
-        border-radius: 0.25rem;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    .card-title, .card-subtitle {
-        text-align: center;
-    }
-    .form-control {
-        margin: 10px auto;
-    }
-</style>
+<%- include("partials/header.ejs") %>
+    <style>
+        /* STYLING HERE */
+        .card {
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 0.25rem;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
 
-<div class="py-5">
-    <div class="container">
-        <div class="row">
-            <% for(let i=0; i<enquiries.length; i++){ %>
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h6 class="card-title text-muted">Customer Name</h6>
-                            <h5 class="card-subtitle mb-2"><%= enquiries[i].customerName %></h5>
-                            <h6 class="card-title text-muted">Stays at</h6>
-                            <h5 class="card-subtitle mb-2"><%= enquiries[i].location %></h5>
-                            <h6 class="card-title text-muted">The enquiry</h6>
-                            <h5 class="card-subtitle mb-4"><%= enquiries[i].enquiry %></h5>
-                            <form action="/customer/accept/<%=enquiries[i].customerName%>/<%=i%>" method="POST" class="form-group">
+        .card-title,
+        .card-subtitle {
+            text-align: center;
+        }
+
+        .form-control {
+            margin: 10px auto;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 200px;
+            border: 1px solid #f1f1f1;
+            perspective: 1000px;
+            /* Remove this if you don't want the 3D effect */
+        }
+
+        /* This container is needed to position the front and back side */
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        /* Do an horizontal flip when you move the mouse over the flip box container */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Position the front and back side */
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            /* Safari */
+            backface-visibility: hidden;
+        }
+
+        /* Style the front side (fallback if image is missing) */
+        .flip-card-front {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        /* Style the back side */
+        .flip-card-back {
+            background-color: #f1f1f1;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .status-card {
+            width: 100%;
+            padding: 5px;
+        }
+    </style>
+
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                <% for(let i=0; i<enquiries.length; i++){ %>
+                    <div class="col-4">
+                        <div class="flip-card card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <h6 class="card-title text-muted mt-4">Customer Name</h6>
+                                    <h5 class="card-subtitle mb-2">
+                                        <%= enquiries[i].customerName %>
+                                    </h5>
+                                    <h6 class="card-title text-muted">Stays at</h6>
+                                    <h5 class="card-subtitle mb-2">
+                                        <%= enquiries[i].location %>
+                                    </h5>
+
+                                </div>
+                                <div class="flip-card-back">
+                                    <h6 class="card-title text-muted mt-4">The enquiry</h6>
+                                    <h5 class="card-subtitle mb-4">
+                                        <%= enquiries[i].enquiry %>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card status-card">
+                            <form action="/customer/accept/<%=enquiries[i].customerName%>/<%=i%>" method="POST"
+                                class="form-group">
                                 <button class="btn btn-block btn-outline-success">Accept!</button>
                             </form>
-                            <form action="/customer/reject/<%=enquiries[i].customerName%>/<%=i%>" method="POST" class="form-group">
+                            <form action="/customer/reject/<%=enquiries[i].customerName%>/<%=i%>" method="POST"
+                                class="form-group">
                                 <button class="btn btn-block btn-outline-danger">Decline</button>
                             </form>
                         </div>
+                        <!-- <div class="card">
+                        <div class="card-body">
+                            
+                        </div>
+                    </div> -->
                     </div>
-                </div>
-            <% } %>
+                    <% } %>
+            </div>
         </div>
     </div>
-</div>
