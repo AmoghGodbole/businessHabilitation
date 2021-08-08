@@ -133,7 +133,7 @@ app.post("/register/business", function (req, res) {
         res.render("business/register");
       } else {
         passport.authenticate("businessLocal")(req, res, function () {
-          res.redirect("/customer/list");
+          res.redirect("/business/enquiries");
         });
       }
     }
@@ -199,6 +199,7 @@ app.post("/business/:id/enquire", isCustomerLoggedIn, async (req, res) => {
   const result = await Business.findById(req.params.id);
   result.enquiries.push(newEnquriy);
   await result.save();
+  res.redirect("/customer/enquiries");
 });
 
 // GET ALL THE ENQUIRIES FOR A PARTICULAR BUSINESS

@@ -32,10 +32,10 @@
                 <div class="col-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><strong>Business Name</strong></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><%= shops[i].businessName %></h6>
-                            <h5 class="card-title"><strong>Domain Name</strong></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><%= shops[i].domains %></h6>
+                            <h6 class="card-title text-muted">Business Name</h6>
+                            <h5 class="card-subtitle mb-2"><%= shops[i].businessName %></h5>
+                            <h6 class="card-title text-muted">Domain Name</h6>
+                            <h5 class="card-subtitle mb-2"><%= shops[i].domains %></h5>
                             <form action="/business/<%= shops[i].id %>/enquire" method="POST" class="form-group">
                                 <input 
                                     type="text" 
