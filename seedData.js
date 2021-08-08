@@ -86,4 +86,33 @@ const locations = [
   "Virar",
 ];
 
-module.exports = { seed, enquiries, locations };
+const domains = [
+  "Health",
+  "General",
+  "Sports",
+  "Medical",
+  "Clothing",
+  "Software",
+  "Electronics",
+  "Hardware",
+  "Plumbing",
+  "Carpentry",
+  "Training",
+  "Event Planning",
+  "Consulting",
+  "Marketing",
+  "Waste Management",
+  "Construction",
+  "Legal",
+  "Insurance",
+  "Security",
+  "Travel",
+  "Research",
+  "Design",
+  "Finance",
+  "Delivery",
+  "Real Estate",
+  "Printing",
+];
+
+module.exports = { seed, enquiries, locations, domains };

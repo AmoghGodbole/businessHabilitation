@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const LocalStrategy = require("passport-local");
 const Customer = require("./models/customer");
 const Business = require("./models/business");
-const { seed, enquiries, locations } = require("./seedData");
+const { seed, enquiries, locations, domains } = require("./seedData");
 const { findByIdAndUpdate } = require("./models/customer");
 
 mongoose.set("useNewUrlParser", true);
@@ -112,7 +112,7 @@ app.get("/logout", function (req, res) {
 // BUSINESS ROUTES
 //Show signUp form
 app.get("/register/business", function (req, res) {
-  res.render("business/register", { locations });
+  res.render("business/register", { locations, domains });
 });
 
 //Handling User Sign up
